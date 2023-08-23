@@ -29,6 +29,7 @@ export const CinemaList = () => {
         className={styles.container_carousel}
       >
         {
+          cinemaList &&
           cinemaList
             .slice(0, 7)
             .map(item => (
