@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+  margin: 30px 60px;
+}
+
+.titulo {
+  font-size: 35px;
+  text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff;
+  width: 100%;
+  padding: 0 10%;
+}
+
+.boton_mas {
+  position: absolute;
+  top: 80%;
+  right: 20px;
+  border: none;
+  margin-right: 50px;
+  padding: 10px;
+  background-color: var(--color-boton);
+  color: var(--color-texto-boton);
+  border-radius: 7px;
+}
+
+.boton_mas:hover {
+  background-color: var(--color-boton-hover);
+  color: var(--color-texto-boton-hover);
+  transition: 3s background-color all;
+}
+
+@media (max-width: 620px) {
+  .container {
+    margin: 0;
+  }
+
+  .titulo {
+    font-size: 15px;
+  }
+
+  .boton_mas {
+    font-size: 12px;
+    top: 50%;
+    right: -40px;
+  }
+}
