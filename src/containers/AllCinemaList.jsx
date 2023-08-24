@@ -8,24 +8,26 @@ export const AllCinemaList = () => {
   const location = useLocation();
   const dataCinemaList = location.state;
 
-  const { handlePrevious, handleNext, cinemaList, pageNum, totalPage } = usePagination({dataCinemaList});
+  const { handlePrevious, handleNext, cinemaList, pageNum, totalPage } = usePagination({ dataCinemaList });
 
   return (
     <>
       <section className={`${styles.container_card}`}>
         {
-          cinemaList.map(item => (
-            <Card
-              key={item.id}
-              imagen={item.poster_path}
-              titulo={item.title}
-              classNameImg={`${styles.card}`}
-            />
-          ))
+          !cinemaList ? (<Loading />) :
+            (
+              cinemaList.map(item => (
+                <Card
+                  key={item.id}
+                  imagen={item.poster_path}
+                  titulo={item.title}
+                  classNameImg={`${styles.card}`}
+                />
+              ))
+            )
         }
       </section>
       <div className={styles.botones}>
-        {/* <button onClick={goToFirst}>1</button> */}
         {
           pageNum === 1 ?
             <button
