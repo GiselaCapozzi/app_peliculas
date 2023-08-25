@@ -1,16 +1,18 @@
 .container_card {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-gap: 25px;
-  margin: 25px 12px;
-  width: 95%;
+  grid-template-columns: repeat(auto-fit, minmax(107px, 2fr));
+  grid-gap: 70px;
+  margin: 75px 45px;
   height: auto;
+  width: 90vw;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
   width: 150px;
   height: auto;
-  padding: .7rem;
+  /* padding: .7rem; */
 }
 
 .botones {
