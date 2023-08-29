@@ -19,6 +19,7 @@ export const AllCinemaList = () => {
               cinemaList.map(item => (
                 <Card
                   key={item.id}
+                  id={item.id}
                   imagen={item.poster_path}
                   titulo={item.title}
                   classNameImg={`${styles.card}`}
