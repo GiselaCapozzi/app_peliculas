@@ -11,7 +11,7 @@ export const useFetchCinemaList = () => {
     setCinemaList(result.results)
     setTotalPage(result.total_pages)
   }  
-
+  
   useEffect(() => {
     getList()
   }, [pageNum])

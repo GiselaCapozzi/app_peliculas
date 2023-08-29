@@ -3,12 +3,17 @@ import sin_imagen from '../assets/sin_imagen.png';
 import styles from '../styles/card.module.css';
 import { useNavigate } from "react-router-dom";
 
-export const Card = ({ imagen, titulo, classNameImg }) => {
+export const Card = ({ imagen, titulo, classNameImg, id }) => {
 
 const navigate = useNavigate();
 
 const detailsMovie = () => {
-  navigate(`/details/${titulo}`)
+  navigate(`/details/${titulo}`,
+  {
+    state: {
+      id: id
+    }
+  })
 }
 
   return (
