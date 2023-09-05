@@ -1,0 +1,11 @@
+.btn {
+  background-color: var(--color-boton);
+  color: var(--color-texto-boton);
+  border-radius: 5px;
+  margin: 0 0 0 3px;
+}
+
+.btn:hover {
+  background-color: var(--color-boton-hover);
+  color: var(--color-texto-boton-hover);
+}
