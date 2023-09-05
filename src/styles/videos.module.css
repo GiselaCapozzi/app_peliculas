@@ -1,0 +1,8 @@
+.container_carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  background-color: cadetblue;
+  margin-top: 70px;
+}

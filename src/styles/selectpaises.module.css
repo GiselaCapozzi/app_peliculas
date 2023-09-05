@@ -1,0 +1,34 @@
+.container_watch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+  height: auto;
+}
+
+.container_providers {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  padding: 40px;
+}
+
+.provider {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.provider img {
+  width: 70px;
+  height: 70px;
+  margin: 0 25px;
+}
+
+.provider p {
+  font-size: 12px;
+}

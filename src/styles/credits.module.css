@@ -1,0 +1,9 @@
+.container_galery {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 95vw;
+  overflow: hidden;
+  overflow-x: scroll;
+}

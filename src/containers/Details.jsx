@@ -5,6 +5,7 @@ import styles from '../styles/details.module.css';
 import { useFetchFlags } from '../hooks/useFetchFlags';
 import { InfoMovie } from "../components/InfoMovie";
 import ReactStars from "react-stars";
+import { MoreInfo } from "./MoreInfo";
 
 export const Details = () => {
 
@@ -27,9 +28,7 @@ export const Details = () => {
     tagline 
   } = data;
 
-console.log(data)
-
-const puntuacion = vote_average && vote_average.toFixed(1);
+const puntuacion = Number(vote_average && vote_average.toFixed(1));
 
   return (
     <section className={styles.container_detail}>
@@ -62,6 +61,9 @@ const puntuacion = vote_average && vote_average.toFixed(1);
         vote_average={vote_average}
         runtime={runtime}
         flags={flags}
+      />
+      <MoreInfo 
+        id={idMovie}
       />
     </section>
   )
