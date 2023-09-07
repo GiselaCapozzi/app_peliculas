@@ -7,7 +7,9 @@ export const useFetchInfo = ({ id, endpoint }) => {
 
   useEffect(() => {
     getMoreInfoMovie(id, endpoint)
-      .then(res => setData(res))
+      .then(res => {
+        setData(res);
+      })
   }, [endpoint])
 
   return {

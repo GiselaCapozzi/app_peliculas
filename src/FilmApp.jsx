@@ -12,7 +12,7 @@ export const FilmApp = () => {
       <Routes>
         <Route path='/'  element={<Home />} />
         <Route path='/all-cinema-list' element={<AllCinemaList />} />
-        <Route path='/details/:title' element={<Details />} />
+        <Route path='/details/:title/:id' element={<Details />} />
       </Routes>
     </>
   )

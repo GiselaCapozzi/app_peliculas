@@ -9,7 +9,6 @@ export const Credits = ({ id }) => {
 
   const { data } = useFetchInfo({ id, endpoint });
   const { cast, crew } = data;
-
   return (
     <>
       <h4>Actores</h4>

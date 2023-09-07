@@ -5,7 +5,7 @@ import { InfoWatchProviders } from './InfoWatchProviders';
 export const SelectPais = ({ listaPaises, data }) => {
   
   const { selectedPais, obtenerValorPais, paisElegido } = useCountry({ listaPaises });  
-  console.log(paisElegido)
+
   return (
     <>
       {

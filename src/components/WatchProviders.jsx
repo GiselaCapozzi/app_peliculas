@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useFetchInfo } from "../hooks/useFetchInfo";
 import { SelectPais } from "./SelectPais";
 import styles from '../styles/selectpaises.module.css';
-import { InfoWatchProviders } from "./InfoWatchProviders";
 
 export const WatchProviders = ({ id }) => {
 

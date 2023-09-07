@@ -1,28 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFetchInfo } from "../hooks/useFetchInfo";
+import { useNavigate } from "react-router-dom";
+import { SectionMoreMovies } from "./SectionMoreMovies";
 
 export const Recommendations = ({ id }) => {
 
+  const navigate = useNavigate();
+  
   const [endpoint, setEndpoint] = useState('recommendations');
 
-  const { data } = useFetchInfo({id, endpoint});
+  const { data } = useFetchInfo({ id, endpoint });
 
-  useEffect(() => {
-
-  }, [data])
-
-  console.log(data.results)
+const goToDetails = (title, id) => {
+  console.log(id)
+  // navigate(`/details/${title}/${id}`, {
+  //   state: { data }
+  // });
+}
   return (
     <>
-    {
-      data.results && data.results.map((item, index) => {
-        return (
-          <div key={index}>
-            <h3>{item.title}</h3>
-          </div>
-        )
-      })
-    }
+    <h4>Pelís Recomendadas</h4>
+      <SectionMoreMovies 
+      data={data}
+      onClick={goToDetails}
+    />
     </>
   )
 }

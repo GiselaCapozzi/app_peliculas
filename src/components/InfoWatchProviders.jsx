@@ -3,8 +3,6 @@ import { imageUrl } from '../constants/apiFilms';
 import styles from '../styles/selectpaises.module.css';
 
 export const InfoWatchProviders = ({ paisElegido, data }) => {
-  console.log(data.results)
-  console.log(paisElegido)
 
   const [infoCountry, setInfoCountry] = useState([]);
 
@@ -18,7 +16,6 @@ export const InfoWatchProviders = ({ paisElegido, data }) => {
         }
       }
     }
-    console.log(info)
     return info;
   }
 
@@ -29,8 +26,6 @@ export const InfoWatchProviders = ({ paisElegido, data }) => {
       setInfoCountry(obtenerInfoPais(paisElegido))
     }
   }, [paisElegido])
-
-  console.log(infoCountry)
 
   return (
     <div>
@@ -45,49 +40,64 @@ export const InfoWatchProviders = ({ paisElegido, data }) => {
       }
       {
         infoCountry.length > 0 && infoCountry.map(item => (
-          <aside>
-            {
-              item.buy && 
-            <h4>Compra</h4>
-            }
-            <div className={styles.container_providers}>
+          <section>
+            <div>
               {
-                item.buy && item.buy.map(compra => (
-                  <div className={styles.provider} key={compra.name}>
-                    <img src={imageUrl + compra.logo_path} alt="" />
-                  </div>
-                ))
+                item.buy &&
+                <h4>Compra</h4>
+              }
+              {
+                item.buy &&
+                <div className={styles.container_providers}>
+                  {
+                    item.buy && item.buy.map(compra => (
+                      <div className={styles.provider} key={compra.name}>
+                        <img src={imageUrl + compra.logo_path} alt="" />
+                      </div>
+                    ))
+                  }
+                </div>
               }
             </div>
-            {
-              item.rent && 
-            <h4>Alquiler</h4>
-            }
-            <div className={styles.container_providers}>
+            <div>
               {
-                item.rent && item.rent.map(alquiler => (
-                  <div className={styles.provider} key={alquiler.provider_id}>
-                    <img src={imageUrl + alquiler.logo_path} alt="" />
-                  </div>
-                ))
+                item.rent &&
+                <h4>Alquiler</h4>
               }
-              
-            </div>
-            {
-              item.flatrate && 
-            <h4>Stream</h4>
-            }
-            <div className={styles.container_providers}>
               {
-                item.flatrate && item.flatrate.map(stream => (
-                  <div className={styles.provider} key={stream.provider_id}>
-                    <img src={imageUrl + stream.logo_path} alt="" />
-                  </div>
-                ))
+                item.rent &&
+                <div className={styles.container_providers}>
+                  {
+                    item.rent && item.rent.map(alquiler => (
+                      <div className={styles.provider} key={alquiler.provider_id}>
+                        <img src={imageUrl + alquiler.logo_path} alt="" />
+                      </div>
+                    ))
+                  }
+
+                </div>
               }
-              
             </div>
-          </aside>
+            <div>
+              {
+                item.flatrate &&
+                <h4>Stream</h4>
+              }
+              {
+                item.flatrate &&
+                <div className={styles.container_providers}>
+                  {
+                    item.flatrate && item.flatrate.map(stream => (
+                      <div className={styles.provider} key={stream.provider_id}>
+                        <img src={imageUrl + stream.logo_path} alt="" />
+                      </div>
+                    ))
+                  }
+                </div>
+              }
+
+            </div>
+          </section>
         ))
       }
     </div>

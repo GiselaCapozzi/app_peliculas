@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 export const Card = ({ imagen, titulo, classNameImg, id }) => {
 
-const navigate = useNavigate();
-
-const detailsMovie = () => {
-  navigate(`/details/${titulo}`,
-  {
-    state: {
-      id: id
-    }
-  })
-}
+  const navigate = useNavigate();
+  const detailsMovie = () => {
+    navigate(`/details/${titulo}/${id}`,
+      {
+        state: {
+          id: id
+        }
+      }
+    )
+  }
 
   return (
     <div className={styles.container_card} onClick={detailsMovie}>
@@ -25,9 +25,9 @@ const detailsMovie = () => {
           className={classNameImg}
         />
       </picture>
-        <div className={styles.container_text}>
-          <p>{titulo}</p>
-        </div>
+      <div className={styles.container_text}>
+        <p>{titulo}</p>
+      </div>
     </div>
   )
 }
