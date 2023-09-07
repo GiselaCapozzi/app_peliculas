@@ -1,0 +1,24 @@
+.container_recommendations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 75%;
+  flex-wrap: wrap;
+  background-color: #dee9f5;
+  margin: 25px 0;
+}
+
+.card {
+  width: 180px;
+  height: 250px;
+  margin: 7px;
+  padding: 7px;
+}
+
+.card:hover {
+  cursor: pointer;
+  width: 190px;
+  height: 260px;
+  box-shadow: 5px 7px 7px 7px #000000ce;
+}

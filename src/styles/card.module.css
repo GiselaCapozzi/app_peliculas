@@ -2,12 +2,12 @@
   display: flex;
   height: 203px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
 }
 
 .container_card:hover {
-  box-shadow: 20px 17px 7px 7px #000000ce;
+  /* box-shadow: 20px 17px 7px 7px #000000ce; */
   cursor: pointer;
 }
 
