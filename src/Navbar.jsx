@@ -27,14 +27,14 @@ const size = useWindowSize();
             size.width <= 991 ? 
             (
             <div className={styles.link_search_sm}>
-              <Link>Iniciar Sesion</Link>
+              <Link to={'/login'}>Iniciar Sesion</Link>
               <Link>Buscar</Link>
             </div>
             ) : 
             (
               <div className={styles.link_search_xl}>
                 <Link><i className="bi bi-search"></i></Link>
-                <Link><i className="bi bi-person"></i></Link>
+                <Link to={'/login'}><i className="bi bi-person"></i></Link>
               </div>
             )
           }

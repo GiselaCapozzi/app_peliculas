@@ -1,7 +1,8 @@
 :root {
   --color-boton: #101D42;
   --color-texto-boton: #ddd;
-  --color-boton-hover: #1A268A;
+  --color-boton-hover: #09189e;
   --color-texto-boton-hover: #aaa; 
   --color-border: #14002b;
+  --color-fondo: #c9ddfe;
 }

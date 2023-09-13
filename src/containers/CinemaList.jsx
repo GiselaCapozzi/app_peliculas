@@ -40,16 +40,18 @@ export const CinemaList = () => {
               <CarouselImage
                 item={item}
                 key={item.id}
+                navigateAllCinemaList={navigateAllCinemaList}
+                cinemaList={cinemaList}
               />
             ))
           )          
         }
       </Carousel>
-      <button
+      {/* <button
         className={styles.boton_mas}
         onClick={() => navigateAllCinemaList(cinemaList)}
       >Mas pelis...
-      </button>
+      </button> */}
     </>
   )
 }
