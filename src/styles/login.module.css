@@ -1,0 +1,53 @@
+.container_login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 100vw;
+}
+
+.login_section {
+  background-color: var(--color-fondo);
+  width: 350px;
+  height: auto;
+  border: 1px solid var(--color-border);
+  padding: 47px;
+}
+
+.title_login {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.container_redes_sociales {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.cuadro_social {
+  margin: 23px 0;
+}
+
+.red_social {
+  margin: 15px;
+  font-size: 25px;
+  color: var(--color-boton);
+  cursor: pointer;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.red_social:hover {
+  color: var(--color-boton-hover);
+}
+
+.sesion {
+  display: flex;
+  margin-top: 10px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+}

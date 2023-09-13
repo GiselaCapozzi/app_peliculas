@@ -1,6 +1,7 @@
 .container {
   position: relative;
-  margin: 30px 60px;
+  margin: 15px 2px;
+  cursor: pointer
 }
 
 .titulo {
@@ -10,7 +11,7 @@
     1px -1px 0 #fff,
     -1px -1px 0 #fff;
   width: 100%;
-  padding: 0 10%;
+  padding: 0 5%;
 }
 
 .boton_mas {
