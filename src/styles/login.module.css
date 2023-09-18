@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: center;
   height: 70vh;
-  width: 100vw;
+  width: 95vw;
+  margin-top: 90px;
 }
 
 .login_section {
@@ -17,6 +18,24 @@
 .title_login {
   text-align: center;
   margin-bottom: 18px;
+}
+
+.input_submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--color-boton);
+  color: var(--color-texto-boton);
+  border-radius: 5px;
+  border: none;
+}
+
+.input_submit:hover {
+  transition: background-color 1s ease-in;
+  background-color: var(--color-boton-hover);
+  color: var(--color-texto-boton-hover);
+  color: var(--color-fondo);
 }
 
 .container_redes_sociales {

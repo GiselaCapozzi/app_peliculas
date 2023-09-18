@@ -11,7 +11,7 @@
   width: 500px;
   height: auto;
   border: 1px solid var(--color-border);
-  padding: 47px;
+  padding: 49px;
   margin-top: 25px;
 }
 
@@ -33,4 +33,15 @@
   align-items: flex-end;
   justify-content: flex-end;
   width: 100%;
+}
+
+.input_submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--color-boton);
+  color: var(--color-texto-boton);
+  border-radius: 5px;
+  border: none;
 }
