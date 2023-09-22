@@ -6,7 +6,9 @@ import {
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  FacebookAuthProvider,
+  signInAnonymously
 } from 'firebase/auth';
 import { auth, app } from '../firebase/firebaseConfig';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
@@ -19,7 +21,7 @@ export const useAuth = () => {
   return context;
 }
 
-export function AuthProvider({ children }) {
+export function AuthProvider({ children, checked }) {
   const firestore = getFirestore(app)
   const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
@@ -39,9 +41,7 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    if (user){
-      obtenerDatosUsuario();
-    }
+    if (user) obtenerDatosUsuario();
   }, [user]);
 
   const signup = async (email, password, name, lastname, photouser, username, admin) => {
@@ -49,52 +49,60 @@ export function AuthProvider({ children }) {
       .then((usuarioFirebase) => {
         return usuarioFirebase;
       });
-      
+
+    console.log(infoUsuario.user.uid);
     const docuRef = doc(firestore, `usuarios/${infoUsuario.user.uid}`);
     setDoc(docuRef, {
-      email,
-      name,
-      lastname,
-      username,
-      photouser,
-      admin
+      email: email,
+      username: username,
+      photouser: photouser,
+      admin: admin
     })
   }
 
-  const login = (email, password) => signInWithEmailAndPassword(auth, email, password)
+  const login = async (email, password) => await signInWithEmailAndPassword(auth, email, password)
 
-  const logout = () => signOut(auth)
+  const logout = async () => await signOut(auth)
 
-  const loginWithGoogle = () => {
+  const loginWithGoogle = async () => {
     const googleProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleProvider)
+    return await signInWithPopup(auth, googleProvider)
   }
 
-  const resetPassword = async (email) => sendPasswordResetEmail(auth, email)
+  const loginWithFacebook = async () => {
+    const facebookProvider = new FacebookAuthProvider();
+    return await signInWithPopup(auth, facebookProvider);
+  }
+
+  const loginAnonymous = async () => await signInAnonymously(auth)
+
+  const resetPassword = async (email) => await sendPasswordResetEmail(auth, email)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       if (currentUser) {
         setUser(currentUser);
-        setLoading(false);
       } else {
         setUser(null);
-        setLoading(true);
       }
     });
 
     return () => unsubscribe();
   })
 
-  const value = {
-    signup, 
-    login, 
-    user, 
-    logout, 
-    loginWithGoogle, 
-    resetPassword, 
-    usuario,
-    setUsuario
-  }
+const value = { 
+  signup, 
+  login, 
+  user, 
+  logout, 
+  loginWithGoogle, 
+  loginWithFacebook,
+  resetPassword,
+  loginAnonymous,
+  usuario,
+  loading,
+  setLoading
+}
+
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 }
