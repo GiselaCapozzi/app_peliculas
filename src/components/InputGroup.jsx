@@ -6,7 +6,7 @@ export const InputGroup = ({
   onChange 
 }) => {
   return (
-    <div className={`input-group mb-3`}>
+    <div className={`input-group mb-1 mt-3`}>
       <input
         type={type}
         className={`form-control`}

@@ -2,13 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70vh;
-  width: 95vw;
-  margin-top: 90px;
+  height: 100vh;
+  width: auto;
+  /* margin-top: 90px; */
+  background-image: url('../assets/estrenos-peliculas-julio-2023-649d7e5822be5.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .login_section {
-  background-color: var(--color-fondo);
+  background-color: #c9ddfe98;
   width: 350px;
   height: auto;
   border: 1px solid var(--color-border);
@@ -29,12 +33,13 @@
   color: var(--color-texto-boton);
   border-radius: 5px;
   border: none;
+  padding: 5px;
+  margin-top: 12px;
 }
 
 .input_submit:hover {
   transition: background-color 1s ease-in;
   background-color: var(--color-boton-hover);
-  color: var(--color-texto-boton-hover);
   color: var(--color-fondo);
 }
 
@@ -50,7 +55,7 @@
 }
 
 .red_social {
-  margin: 15px;
+  margin: 7px;
   font-size: 25px;
   color: var(--color-boton);
   cursor: pointer;
@@ -69,4 +74,94 @@
   align-items: flex-end;
   justify-content: flex-end;
   width: 100%;
+  color: var(--color-boton);
+}
+
+.link {
+  text-decoration: none;
+}
+
+.sesion[id='link']:hover {
+  color: var(--color-boton-hover);
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: red;
+  font-weight: 600;
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #02be02;
+  font-weight: 600;
+  text-align: center;
+}
+
+.carga {
+  -webkit-animation:  4s linear infinite carga;
+  -moz-animation:  4s linear infinite carga;
+  -ms-animation:  4s linear infinite carga;
+  -o-animation:  4s linear infinite carga;
+  animation: 4s linear infinite carga;
+  width: 20px;
+  height: auto;
+  margin-right: 5px;
+}
+
+@-webkit-keyframes carga {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes carga {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.registro {
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 15px;
+  border: 2px solid var(--color-boton) ;
+  border-radius: 7px;
+  padding: 3px;
+  color: var(--color-boton);
+}
+
+.registro:hover {
+  background-color: var(--color-boton);
+  color: white;
+  cursor: pointer;
 }

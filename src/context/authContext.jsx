@@ -6,7 +6,9 @@ import {
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  FacebookAuthProvider,
+  signInAnonymously
 } from 'firebase/auth';
 import { auth, app } from '../firebase/firebaseConfig';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
@@ -19,7 +21,7 @@ export const useAuth = () => {
   return context;
 }
 
-export function AuthProvider({ children }) {
+export function AuthProvider({ children, checked }) {
   const firestore = getFirestore(app)
   const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
@@ -39,25 +41,23 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    if (user){
+    if (user) {
       obtenerDatosUsuario();
     }
-  }, [user]);
+  }, []);
 
   const signup = async (email, password, name, lastname, photouser, username, admin) => {
     const infoUsuario = await createUserWithEmailAndPassword(auth, email, password, name, lastname, photouser, username)
       .then((usuarioFirebase) => {
         return usuarioFirebase;
       });
-      
+
     const docuRef = doc(firestore, `usuarios/${infoUsuario.user.uid}`);
     setDoc(docuRef, {
-      email,
-      name,
-      lastname,
-      username,
-      photouser,
-      admin
+      email: email,
+      username: username,
+      photouser: photouser,
+      admin: admin
     })
   }
 
@@ -65,10 +65,17 @@ export function AuthProvider({ children }) {
 
   const logout = () => signOut(auth)
 
-  const loginWithGoogle = () => {
+  const loginWithGoogle = async () => {
     const googleProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleProvider)
+    return await signInWithPopup(auth, googleProvider)
   }
+
+  const loginWithFacebook = async () => {
+    const facebookProvider = new FacebookAuthProvider();
+    return await signInWithPopup(auth, facebookProvider)
+  }
+
+  const loginAnonymous = async () => await signInAnonymously(auth);
 
   const resetPassword = async (email) => sendPasswordResetEmail(auth, email)
 
@@ -76,10 +83,8 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       if (currentUser) {
         setUser(currentUser);
-        setLoading(false);
       } else {
         setUser(null);
-        setLoading(true);
       }
     });
 
@@ -87,14 +92,18 @@ export function AuthProvider({ children }) {
   })
 
   const value = {
-    signup, 
-    login, 
-    user, 
-    logout, 
-    loginWithGoogle, 
-    resetPassword, 
+    signup,
+    login,
+    user,
+    logout,
+    loginWithGoogle,
+    loginWithFacebook,
+    loginAnonymous,
+    resetPassword,
     usuario,
-    setUsuario
+    setLoading,
+    loading
   }
+
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 }
