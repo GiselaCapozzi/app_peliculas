@@ -1,17 +1,17 @@
 export const iconSocialNetworks = [
   {
     id: 1,
-    name: 'google',
+    name: 'Google',
     icon: 'bi bi-google'
   },
   {
     id: 2,
-    name: 'facebook',
-    icon: 'bi bi-facebook'
+    name: 'Instagram',
+    icon: 'bi bi-instagram'
   },
   {
     id: 3,
-    name: 'anonymous',
-    icon: 'bi bi-emoji-sunglasses-fill'
+    name: 'Facebook',
+    icon: 'bi bi-facebook'
   }
 ]

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&display=swap');
-
 :root {
   --color-boton: #101D42;
   --color-texto-boton: #ddd;
@@ -7,8 +5,4 @@
   --color-texto-boton-hover: #aaa; 
   --color-border: #14002b;
   --color-fondo: #c9ddfe;
-}
-
-body {
-  font-family: Kalam;
 }
