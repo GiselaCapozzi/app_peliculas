@@ -41,10 +41,8 @@ export function AuthProvider({ children, checked }) {
   }
 
   useEffect(() => {
-    if (user) {
-      obtenerDatosUsuario();
-    }
-  }, []);
+    if (user) obtenerDatosUsuario();
+  }, [user]);
 
   const signup = async (email, password, name, lastname, photouser, username, admin) => {
     const infoUsuario = await createUserWithEmailAndPassword(auth, email, password, name, lastname, photouser, username)
@@ -52,6 +50,7 @@ export function AuthProvider({ children, checked }) {
         return usuarioFirebase;
       });
 
+    console.log(infoUsuario.user.uid);
     const docuRef = doc(firestore, `usuarios/${infoUsuario.user.uid}`);
     setDoc(docuRef, {
       email: email,
@@ -61,9 +60,9 @@ export function AuthProvider({ children, checked }) {
     })
   }
 
-  const login = (email, password) => signInWithEmailAndPassword(auth, email, password)
+  const login = async (email, password) => await signInWithEmailAndPassword(auth, email, password)
 
-  const logout = () => signOut(auth)
+  const logout = async () => await signOut(auth)
 
   const loginWithGoogle = async () => {
     const googleProvider = new GoogleAuthProvider();
@@ -72,12 +71,12 @@ export function AuthProvider({ children, checked }) {
 
   const loginWithFacebook = async () => {
     const facebookProvider = new FacebookAuthProvider();
-    return await signInWithPopup(auth, facebookProvider)
+    return await signInWithPopup(auth, facebookProvider);
   }
 
-  const loginAnonymous = async () => await signInAnonymously(auth);
+  const loginAnonymous = async () => await signInAnonymously(auth)
 
-  const resetPassword = async (email) => sendPasswordResetEmail(auth, email)
+  const resetPassword = async (email) => await sendPasswordResetEmail(auth, email)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -91,19 +90,19 @@ export function AuthProvider({ children, checked }) {
     return () => unsubscribe();
   })
 
-  const value = {
-    signup,
-    login,
-    user,
-    logout,
-    loginWithGoogle,
-    loginWithFacebook,
-    loginAnonymous,
-    resetPassword,
-    usuario,
-    setLoading,
-    loading
-  }
+const value = { 
+  signup, 
+  login, 
+  user, 
+  logout, 
+  loginWithGoogle, 
+  loginWithFacebook,
+  resetPassword,
+  loginAnonymous,
+  usuario,
+  loading,
+  setLoading
+}
 
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 }
