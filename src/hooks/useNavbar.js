@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from './useWindowSize';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/authContext';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 export const useNavbar = () => {
