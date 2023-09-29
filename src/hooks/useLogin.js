@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { validEmail } from "../constants/validations";
 
 export const useLogin = () => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState('');
   const [error, setError] = useState({
     error: '',
     message: ''
@@ -13,6 +15,11 @@ export const useLogin = () => {
     email: '',
     password: ''
   })
+
+  useEffect(() => {
+    console.log(infouser)
+  }, [infouser])
+
   const {
     login,
     setLoading,
@@ -24,20 +31,34 @@ export const useLogin = () => {
     resetPassword
   } = useAuth();
 
+  const notifySuccess = () => {
+    toast.success('Inicio de sesion exitoso!!!', {
+      position: toast.POSITION.TOP_CENTER
+    })
+  }
+
+  const notyfyInfo = () => {
+    toast.info('Sera redirigido a la sección de registro'), {
+      position: toast.POSITION.TOP_CENTER
+    }
+  }
+
   const navigateToHome = () => {
-    const time = 6000;
-    setTimeout(() => (
+    const time = 4000;
+    notifySuccess()
+    setTimeout(() => {
       navigate('/')
-    ), time)
+    }, time)
   }
 
   const handleChange = ({ target: { name, value } }) => {
     setLoading(false)
-    const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    
     setInfouser({
       ...infouser,
       [name]: value
     })
+    console.log(infouser)
     if (name === 'email' && !validEmail.test(infouser.email)) {
       setError({
         message: 'No es un email válido',
@@ -84,9 +105,10 @@ export const useLogin = () => {
           error: 'El usuario no se encuntra registrado, será redirigido a la sección de registro',
           message: 'Firebase: Error (auth/user-not-found).'
         })
-        setTimeout(() => (
+        notyfyInfo();
+        setTimeout(() => {
           navigate('/register')
-        ), 6000)
+        }, 6000)
       } else {
         setError({
           error: '',
@@ -120,7 +142,7 @@ export const useLogin = () => {
     e.preventDefault();
     if (!infouser.email) return setError({
       error: 'No se ingresado email',
-      message:'Por favor ingresa tu email'
+      message: 'Por favor ingresa tu email'
     });
     try {
       await resetPassword(infouser.email);

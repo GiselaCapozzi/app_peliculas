@@ -2,12 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 70vh;
+  height: 100vh;
+  width: auto;
+  background-image: url('../assets/mejores-series-verano-2023-netflix-hbo-disney-6492b06159452.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .register_section {
-  background-color: var(--color-fondo);
+  background-color: #c9ddfe98;
   width: 500px;
   height: auto;
   border: 1px solid var(--color-border);
@@ -44,4 +47,30 @@
   color: var(--color-texto-boton);
   border-radius: 5px;
   border: none;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: red;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--color-fondo);
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #02be02;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--color-fondo);
 }
