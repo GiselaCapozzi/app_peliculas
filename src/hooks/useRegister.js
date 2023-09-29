@@ -54,7 +54,6 @@ export const useRegister = () => {
       ...user,
       [name]: value
     })
-    console.log(user)
     if (name === 'email' && !validEmail.test(user.email)) {
       setErrorMessage('No es un email válido')
     } else if (name === 'name' && value === '') {
@@ -124,6 +123,7 @@ export const useRegister = () => {
     }
 
     try {
+      setErrorMessage('')
       await signup(
         user.email,
         user.password,
@@ -134,9 +134,7 @@ export const useRegister = () => {
         user.admin
       )
       navigateToHome()
-      console.log('registrado')
     } catch (error) {
-      console.log(error.message)
       if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
         setErrorMessage('La contraseña debe tener al menos 6 caracteres')
         return;

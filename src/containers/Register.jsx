@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { InputGroup } from '../components/InputGroup';
 import styles from '../styles/register.module.css';
 import { useRegister } from '../hooks/useRegister';
+import { ToastContainer, Flip } from 'react-toastify';
 
 export const Register = () => {
 
@@ -89,9 +90,12 @@ export const Register = () => {
             value="Registrarse"
             className={styles.input_submit}
           />
-          <p className={styles.sesion}>¿Ya tienes cuenta? <Link to={'/login '}><span>Inicie Sesion</span></Link></p>
+          <p className={styles.sesion}>¿Ya tienes cuenta? <Link className={styles.inicio} to={'/login '}><span>Inicie Sesion</span></Link></p>
         </form>
       </div>
+      <ToastContainer 
+        transition={Flip}
+      /> 
     </section>
   )
 }

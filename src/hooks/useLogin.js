@@ -17,7 +17,7 @@ export const useLogin = () => {
   })
 
   useEffect(() => {
-    console.log(infouser)
+    // console.log(infouser)
   }, [infouser])
 
   const {
@@ -58,7 +58,6 @@ export const useLogin = () => {
       ...infouser,
       [name]: value
     })
-    console.log(infouser)
     if (name === 'email' && !validEmail.test(infouser.email)) {
       setError({
         message: 'No es un email válido',
