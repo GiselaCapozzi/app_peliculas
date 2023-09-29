@@ -3,7 +3,8 @@ export const InputGroup = ({
   placeholder, 
   icono, 
   name,
-  onChange 
+  onChange,
+  onKeyUp
 }) => {
   return (
     <div className={`input-group mb-1 mt-3`}>
@@ -13,8 +14,9 @@ export const InputGroup = ({
         placeholder={placeholder}
         name={name}
         onChange={onChange}
+        onKeyUp={onKeyUp}
       />
-      <span className={`input-group-text`}><i className={icono}></i></span>
+      <span className={`input-group-text`}><i  className={icono}></i></span>
     </div>
   )
 }

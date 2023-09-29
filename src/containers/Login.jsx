@@ -3,6 +3,7 @@ import { InputGroup } from "../components/InputGroup";
 import styles from '../styles/login.module.css';
 import { useLogin } from "../hooks/useLogin";
 import { iconSocialNetworks } from '../constants/socialNetworks';
+import { ToastContainer, Flip } from 'react-toastify';
 
 export const Login = () => {
 
@@ -89,6 +90,9 @@ export const Login = () => {
             && <p className={styles.message}>{error.message}</p>
           }
         </form>
+        <ToastContainer
+          transition={Flip}
+        />
       </div>
     </section>
   )
