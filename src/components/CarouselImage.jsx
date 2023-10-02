@@ -1,11 +1,11 @@
 import { imageUrl } from "../constants/apiFilms";
 import styles from '../styles/carousel.module.css';
 
-export const CarouselImage = ({ item, navigateAllCinemaList, cinemaList }) => {
+export const CarouselImage = ({ item }) => {
     const { backdrop_path, title } = item;
 
   return (
-    <div className={styles.container} onClick={() => navigateAllCinemaList(cinemaList)}>
+    <div className={styles.container}>
       <img
         src={`${imageUrl}${backdrop_path}`}
         alt={item.title}

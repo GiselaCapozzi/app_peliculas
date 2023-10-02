@@ -19,39 +19,45 @@ export const CinemaList = () => {
   }
 
   return (
-    <>
+    <div style={{
+      width: '98.7vw',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column'
+    }}>
       <Carousel
         showThumbs={false}
         showStatus={false}
         showIndicators={false}
         infiniteLoop
         autoPlay
-        stopOnHover
         className={styles.container_carousel}
+        width={600}
+        animationHandler={'slide'}
+        dynamicHeight
+        showArrows={false}
       >
         {
           !cinemaList ? (
             <Loading />
-          ) : 
-          (
-            cinemaList
-            .slice(0, 7)
-            .map(item => (
-              <CarouselImage
-                item={item}
-                key={item.id}
-                navigateAllCinemaList={navigateAllCinemaList}
-                cinemaList={cinemaList}
-              />
-            ))
-          )          
+          ) :
+            (
+              cinemaList
+                .slice(0, 7)
+                .map(item => (
+                  <CarouselImage
+                    item={item}
+                    key={item.id}
+                  />
+                ))
+            )
         }
       </Carousel>
-      {/* <button
-        className={styles.boton_mas}
+      <span
+        className={styles.mas}
         onClick={() => navigateAllCinemaList(cinemaList)}
-      >Mas pelis...
-      </button> */}
-    </>
+      >Ver mas <i className="bi bi-arrow-right-short"></i></span>
+    </div>
   )
 }

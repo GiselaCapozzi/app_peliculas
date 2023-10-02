@@ -62,7 +62,10 @@ export function AuthProvider({ children, checked }) {
 
   const login = async (email, password) => await signInWithEmailAndPassword(auth, email, password)
 
-  const logout = async () => await signOut(auth)
+  const logout = async () => {
+    setUsuario()
+    await signOut(auth)
+  }
 
   const loginWithGoogle = async () => {
     const googleProvider = new GoogleAuthProvider();

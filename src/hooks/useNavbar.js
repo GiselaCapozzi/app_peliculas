@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useWindowSize } from './useWindowSize';
+import { useWindows } from '../context/windowSizeProvider';
 import { useAuth } from '../context/authContext';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
@@ -9,8 +9,8 @@ export const useNavbar = () => {
   const [registro, setRegistro] = useState();
   const navigate = useNavigate();
 
-  const size = useWindowSize();
-  const { user, logout } = useAuth();
+  const windowSize = useWindows();
+  const { user, logout, usuario } = useAuth();
 
   const obtenerDatosUsuario = async () => {
     const db = getFirestore();
@@ -42,7 +42,7 @@ export const useNavbar = () => {
   }
 
   return {
-    size,
+    windowSize,
     handleLogout,
     user
   }

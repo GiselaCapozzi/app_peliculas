@@ -6,20 +6,23 @@ import { AllCinemaList } from './containers/AllCinemaList';
 import { Details } from './containers/Details';
 import { Login } from './containers/Login';
 import { Register } from './containers/Register';
-import { AuthProvider }  from './context/authContext';
+import { AuthProvider } from './context/authContext';
+import { SizeWindowProvider } from './context/windowSizeProvider';
 
 export const FilmApp = () => {
   return (
     <>
       <AuthProvider>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/all-cinema-list' element={<AllCinemaList />} />
-          <Route path='/details/:title/:id' element={<Details />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-        </Routes>
+        <SizeWindowProvider>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/all-cinema-list' element={<AllCinemaList />} />
+            <Route path='/details/:title/:id' element={<Details />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
+        </SizeWindowProvider>
       </AuthProvider>
     </>
   )

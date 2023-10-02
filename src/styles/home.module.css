@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100vw;
+}
+
+.foto {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin: 15px;
+}
+
+.foto:hover {
+  border: 2px solid var(--color-boton-hover);
+  filter: grayscale(100%);
+}

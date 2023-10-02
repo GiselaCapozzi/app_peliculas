@@ -1,6 +1,14 @@
-import { useState, useEffect } from 'react';
+import {  createContext, useContext, useState, useEffect } from 'react';
 
-export const useWindowSize = () => {
+export const sizeWindowsContext = createContext();
+
+export const useWindows = () => {
+  const context = useContext(sizeWindowsContext);
+  if (!context) throw new Error('No hay un proveedor de autentificación');
+  return context;
+}
+
+export const SizeWindowProvider = ({ children }) => {
   
   // Inicializo el estado con undefined para que el servidor y el cliente coincidan
   const [windowSize, setWindowSize] = useState({
@@ -23,6 +31,7 @@ export const useWindowSize = () => {
     // Eliminar el escuchador de evento o limpiarlo
     return () => window.removeEventListener('resize', handleResize)
   }, []);
-  
-  return windowSize;
+
+
+  return <sizeWindowsContext.Provider value={windowSize}>{children}</sizeWindowsContext.Provider>
 }

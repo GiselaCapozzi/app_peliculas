@@ -1,7 +1,9 @@
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  margin: 15px 2px;
-  cursor: pointer
+  margin: 15px 20px;
 }
 
 .titulo {
@@ -14,19 +16,17 @@
   padding: 0 5%;
 }
 
-.boton_mas {
-  position: absolute;
-  top: 80%;
-  right: 20px;
+.mas {
   border: none;
-  margin-right: 50px;
-  padding: 10px;
   background-color: var(--color-boton);
   color: var(--color-texto-boton);
   border-radius: 7px;
+  width: 50vw;
+  text-align: center;
+  margin-top: 5px;
 }
 
-.boton_mas:hover {
+.mas:hover {
   background-color: var(--color-boton-hover);
   color: var(--color-texto-boton-hover);
   transition: 3s background-color all;

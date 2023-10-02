@@ -5,7 +5,7 @@ import { useNavbar } from "./hooks/useNavbar";
 
 export const Navbar = () => {
 
-  const { size, handleLogout, user } = useNavbar();
+  const { windowSize, handleLogout, user } = useNavbar();
 
   return (
     <nav className={`navbar border-bottom navbar-expand-lg ${styles.navbar}`}>
@@ -24,7 +24,7 @@ export const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {
-            size.width <= 991 ?
+            windowSize.width <= 991 ?
               (
                 <div className={styles.link_search_sm}>
                   <Link

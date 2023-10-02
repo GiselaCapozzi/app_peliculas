@@ -1,0 +1,37 @@
+.container_posters {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 99vw;
+  overflow: hidden;
+  overflow-x: visible;
+}
+
+.poster {
+  max-width: 12.5%;
+  height: 180px;
+  margin: 0 2px;
+}
+
+.ver_mas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30px;
+}
+
+.cursor {
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 15px;
+  border: 2px solid var(--color-boton) ;
+  border-radius: 7px;
+  padding: 2px;
+}
+
+.cursor:hover {
+  background-color: var(--color-boton);
+  color: white;
+  cursor: pointer;
+}
