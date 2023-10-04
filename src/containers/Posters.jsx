@@ -30,6 +30,8 @@ export const Posters = () => {
                 key={list.id}
                 poster_path={list.poster_path}
                 title={list.title}
+                vote_average={list.vote_average}
+                id={list.id}
               />
             ))
         }

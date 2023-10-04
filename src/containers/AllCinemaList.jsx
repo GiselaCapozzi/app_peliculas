@@ -2,6 +2,8 @@ import { useLocation } from "react-router-dom";
 import { Card } from "../components/Card";
 import styles from '../styles/cardlist.module.css';
 import { usePagination } from "../hooks/usePagination";
+import { Loading } from "../components/Loading";
+import { Search } from "../components/Search";
 
 export const AllCinemaList = () => {
 
@@ -12,6 +14,9 @@ export const AllCinemaList = () => {
 
   return (
     <>
+      <Search
+  
+      />
       <section className={`${styles.container_card}`}>
         {
           !cinemaList ? (<Loading />) :

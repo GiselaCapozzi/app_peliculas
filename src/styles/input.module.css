@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.input {
+  padding-right: 30px;
+  width: 80vw !important;
+  /* border: none !important; */
+  border: 1.5px solid var(--color-boton) !important;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 2px 2px 2px var(--color-border);
+}
+
+.icono {
+  position: absolute;
+  top: 50%;
+  right: 110px;
+  transform: translateY(-40%);
+  color: #615f5f;
+}

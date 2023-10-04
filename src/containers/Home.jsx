@@ -8,9 +8,6 @@ export const Home = () => {
 
   const { usuario, user } = useAuth();
 
-  console.log(usuario)
-  console.log(user)
-
   return (
     <>
       <section className={styles.container}>
