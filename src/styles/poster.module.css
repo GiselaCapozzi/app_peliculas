@@ -6,12 +6,27 @@
   max-width: 99vw;
   overflow: hidden;
   overflow-x: visible;
+  cursor: pointer;
 }
 
 .poster {
-  max-width: 12.5%;
+  width: 100px;
   height: 180px;
   margin: 0 2px;
+}
+
+.poster:hover {
+  box-shadow: 3px 2px 2px var(--color-boton);
+}
+
+.puntuacion {
+  position: absolute;
+  top: -80px;
+  right: 5px;
+  background-color: #7c7c7cde;
+  padding: 5px;
+  border-radius: 100%;
+  font-weight: 400;
 }
 
 .ver_mas {
