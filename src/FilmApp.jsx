@@ -8,6 +8,7 @@ import { Login } from './containers/Login';
 import { Register } from './containers/Register';
 import { AuthProvider } from './context/authContext';
 import { SizeWindowProvider } from './context/windowSizeProvider';
+import { Search } from './containers/Search';
 
 export const FilmApp = () => {
   return (
@@ -21,6 +22,7 @@ export const FilmApp = () => {
             <Route path='/details/:title/:id' element={<Details />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/search' element={<Search />} />
           </Routes>
         </SizeWindowProvider>
       </AuthProvider>

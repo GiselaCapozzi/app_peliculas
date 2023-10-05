@@ -33,12 +33,12 @@ export const Navbar = () => {
                   >
                     {!user ? 'Iniciar Sesion/Registrarse' : 'Cerrar Sesion'}
                   </Link>
-                  <Link>Buscar</Link>
+                  <Link to={`/search`}>Buscar</Link>
                 </div>
               ) :
               (
                 <div className={styles.link_search_xl}>
-                  <Link><i className="bi bi-search"></i></Link>
+                  <Link to={`/search`}><i className="bi bi-search"></i></Link>
                   <Link
                     onClick={user ? handleLogout : null}
                     to={!user ? '/login' : '/'}

@@ -1,9 +1,7 @@
 .container_card {
   display: flex;
-  height: 203px;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  margin: 2px;
 }
 
 .container_card:hover {
