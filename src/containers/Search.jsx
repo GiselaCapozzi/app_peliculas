@@ -3,6 +3,10 @@ import { Input } from "../components/Input";
 import { useSearch } from "../hooks/useSearch";
 import { Cards } from "./Cards";
 import { Button } from "../components/Button";
+import styles from '../styles/search.module.css';
+import { useWindows } from "../context/windowSizeProvider";
+import { Content } from "../components/Content";
+import { useNavigate } from "react-router-dom";
 
 export const Search = () => {
 
@@ -13,17 +17,20 @@ export const Search = () => {
     searchResultsTv,
     handleSearchSubmit,
     loading,
-    hasMore,
-    showMovie,
-    showTv,
-    showHiddenMovie,
-    showHiddenTv,
     totalResultsMovie,
-    totalResultsTv
+    totalResultsTv,
+    handleScroll,
+    showHiddenContent,
+    showMovie,
+    showTv
   } = useSearch();
 
+  const windowSize = useWindows();
+  
+console.log(searchResultsMovie)
+
   return (
-    <div style={{ width: '15wv' }}>
+    <div className={styles.container}>
       <Input
         type='text'
         icono='bi bi-search'
@@ -31,52 +38,41 @@ export const Search = () => {
         onChange={handleSearchChange}
         onClick={handleSearchSubmit}
       />
-      <Button onClick={showHiddenMovie}>Peliculas {totalResultsMovie}</Button>
-      <Button onClick={showHiddenTv}>Series {totalResultsTv}</Button>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          width: '95vw'
-        }}
+      <div className={styles.container_buttons}>
+      <Button
+        className={styles.button_content}
+        onClick={showHiddenContent}
+        id='movie'
       >
-        <div 
-          style={{
-            width: '50%'
-          }}
-        >
-          {
-            searchResultsMovie.length > 0 ?
-              <>
-                <p>Películas</p>
-                <Cards
-                  arrayList={searchResultsMovie}
-                />
-              </> : null
-          }
-        </div>
-        <div
-        style={{
-          width: '50%'
-        }}
-        >
-          {
-            searchResultsTv.length > 0 ?
-              <>
-                <p>Series</p>
-                <Cards
-                  arrayList={searchResultsTv}
-                />
-              </> : null
-          }
-        </div>
+        <i className='bi bi-film'></i> 
+        <p>{totalResultsMovie} Resultados</p>
+      </Button>
+      <Button
+        className={styles.button_content}
+        onClick={showHiddenContent}
+        id='tv'
+      >
+        <i className="bi bi-tv"></i>
+        <p>{totalResultsTv} Resultados</p>        
+      </Button>
       </div>
-      {
-        loading && <Loading />
-      }
-      {
-        !hasMore && <p>No hay más resultados</p>
-      }
+      <div
+        style={{ flexDirection: windowSize.width <= 991 ? 'column' : 'row' }}
+        className={styles.container_content}>
+        <Content
+          arrayContent={searchResultsMovie}
+          onScroll={handleScroll}
+          title='Peliculas'
+          showContent={showMovie}
+        />
+        <Content
+          arrayContent={searchResultsTv}
+          onScroll={handleScroll}
+          title='Programas de TV'
+          showContent={showTv}
+        />
+      </div>
+
     </div>
   )
 }

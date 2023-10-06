@@ -1,11 +1,14 @@
 import styles from '../styles/button.module.css';
 
-export const Button = ({ children, onClick, id }) => {
+export const Button = ({ children, onClick, id, disabled, style, className }) => {
+
   return (
     <button
-      className={styles.btn}
+      className={className}
       onClick={onClick}
       id={id}
+      disabled={disabled}
+      style={style}
     >{children}</button>
   )
 }

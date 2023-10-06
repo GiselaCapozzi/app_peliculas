@@ -1,12 +1,12 @@
 .container_card {
   display: flex;
-  margin: 35px 45px;
   flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .card {
   width: 150px;
-  height: auto;
+  max-height: 200px;
   /* padding: .7rem; */
 }
 

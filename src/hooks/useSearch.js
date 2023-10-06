@@ -14,12 +14,18 @@ export const useSearch = () => {
   const [totalResultsMovie, setTotalResultsMovie] = useState('-');
   const [totalResultsTv, setTotalResultsTv] = useState('-');
 
-  const showHiddenMovie = () => {
-    setShowMovie(!showMovie)
-  }
+  const showHiddenContent = (e) => {
+    if(e.target.id === 'movie') {
+      setShowMovie(!showMovie);
+      setShowTv(false)
+    } else {
 
-  const showHiddenTv = () => {
-    setShowTv(!showTv)
+    }
+
+    if(e.target.id === 'tv') {
+      setShowMovie(false);
+      setShowTv(!showTv)
+    }
   }
 
   const handleSearchChange = async ({ target: { value } }) => {
@@ -54,11 +60,26 @@ export const useSearch = () => {
   }
 
   const handleScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || loading) {
-      return;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    // if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || loading) {
+    //   return;
+    // }
+    // getNewResults();
+    if (scrollTop + clientHeight >= scrollHeight - 200 && !loading) {
+      getNewResults();
     }
-    getNewResults();
+    console.log(loading)
   }
+
+  // const handleScroll = (e) => {
+  //   const { scrollTop, clientHeight, scrollHeight } = e.target;
+  //   if (scrollTop + clientHeight >= scrollHeight - 200 && !loading) {
+  //     getNewResults();
+  //   }
+  //   console.log('first')
+  // }
 
   const handleSearchSubmit = () => {
     setSearchResultsMovie([]);
@@ -74,7 +95,7 @@ export const useSearch = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [search, pageNum])
+  }, [pageNum, search])
 
   return {
     handleSearchChange,
@@ -87,9 +108,9 @@ export const useSearch = () => {
     hasMore,
     showMovie,
     showTv,
-    showHiddenMovie,
-    showHiddenTv,
+    showHiddenContent,
     totalResultsMovie,
-    totalResultsTv
+    totalResultsTv,
+    handleScroll
   }
 }
